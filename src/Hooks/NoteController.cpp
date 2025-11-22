@@ -239,11 +239,10 @@ MAKE_HOOK_MATCH(NoteController_ManualUpdate, &NoteController::ManualUpdate, void
   // }
 
   BeatmapObjectAssociatedData& ad = getAD(customNoteData->customData);
-  auto const& trackKeys = TracksAD::getAD(customNoteData->customData).tracks;
+  auto const& tracks = TracksAD::getAD(customNoteData->customData).tracks;
 
   noteUpdateAD = &ad;
-  noteTracks = trackKeys;
-  auto& noteBeatmapAD = TracksAD::getBeatmapAD(customNoteData->customData);
+  noteTracks = tracks;
   if (noteTracks.empty() && !ad.animationData.parsed) {
     return NoteController_ManualUpdate(self);
   }
